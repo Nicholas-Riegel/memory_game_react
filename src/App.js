@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import PicList from './PicList'
 
@@ -13,8 +13,12 @@ export default function App() {
 			let i = Math.floor(Math.random() * piclist0.length)
 			piclist1.push(...piclist0.splice(i, 1))
 		}
-		return piclist1
+		setPiclist(piclist1)
 	}
+
+	useEffect(() => {
+		shuffle(piclist)
+	}, [score])
 
 	const handleClick = (e) => {
 		if (piclist.find(x => x.name === e.target.name).clicked === false) {
@@ -23,27 +27,30 @@ export default function App() {
 			setScore(score + 1)
 		} else {
 			setScore(0)
+			setPiclist(PicList)
 			console.log('YOU LOSE!');
 		}
 	}
-	
-	let picArray = shuffle(piclist)
 
-	let images = picArray.map(({ id, url, name }) => (
-		<img
-			key={id}
-			id={id}
-			src={url}
-			alt={name}
-			name={name}
-			onClick={(e)=>handleClick(e)}
-		/>
+	let images = piclist.map(({ id, url, name }) => (
+		<div className='single_pic_div'>
+			<img
+				key={id}
+				id={id}
+				src={url}
+				alt={name}
+				name={name}
+				onClick={(e)=>handleClick(e)}
+			/>
+		</div>
 	))
 
 	return (
-		<div>
+		<div className='main'>
 			<h2>Score: {score}</h2>
-			{images}
+			<div className='all_pics_div'>
+				{images}
+			</div>
     	</div>
   	)
 }
