@@ -1,12 +1,19 @@
-.main > div {
-    border: blue solid 1px;
+header {
+    border: green solid 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.main{
-    border: green solid 1px;
+main {
+    border: rgb(230, 116, 230) solid 5px;
     display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
+    height: 85vh;
+}
+
+.sidebar{
+    width: 20%;
+    border: green solid 5px;
 }
 
 img {
@@ -22,13 +29,16 @@ img:hover{
 .all_pics_div{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    justify-content: flex-end;
+    width: 80%;
+    border: blue solid 5px;
+    box-sizing: border-box;
 }
 
 .single_pic_div{
     display: flex;
     justify-content: center;
-    width: 20%;
-    border: red solid 1px;
+    align-items: center;
+    width: 25%;
+    border: red solid 2px;
+    box-sizing: border-box;
 } 

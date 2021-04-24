@@ -1,23 +1,30 @@
 import React, {useState, useEffect} from 'react'
 
 import PicList from './PicList'
+import Main from './Main'
+import Sidebar from './Sidebar'
 
 export default function App() {
 	const [piclist, setPiclist] = useState(PicList)
 	const [score, setScore] = useState(0)
+	const [highScore, setHighScore] = useState(0)
 
 	const shuffle = (x) => {
-		let piclist0 = [...x]
-		let piclist1 = []
-		while (piclist0.length > 0) {
-			let i = Math.floor(Math.random() * piclist0.length)
-			piclist1.push(...piclist0.splice(i, 1))
+		let piclistA = [...x]
+		let piclistB = []
+		while (piclistA.length > 0) {
+			let i = Math.floor(Math.random() * piclistA.length)
+			piclistB.push(...piclistA.splice(i, 1))
 		}
-		setPiclist(piclist1)
+		setPiclist(piclistB)
 	}
 
 	useEffect(() => {
 		shuffle(piclist)
+		if (score > highScore) {
+			setHighScore(highScore + 1)
+		}
+		// eslint-disable-next-line
 	}, [score])
 
 	const handleClick = (e) => {
@@ -32,25 +39,27 @@ export default function App() {
 		}
 	}
 
-	let images = piclist.map(({ id, url, name }) => (
-		<div className='single_pic_div'>
-			<img
-				key={id}
-				id={id}
-				src={url}
-				alt={name}
-				name={name}
-				onClick={(e)=>handleClick(e)}
-			/>
-		</div>
-	))
+	const reset = () => {
+		setScore(0)
+		setHighScore(0)
+	}
 
 	return (
-		<div className='main'>
-			<h2>Score: {score}</h2>
-			<div className='all_pics_div'>
-				{images}
-			</div>
+		<div>
+			<header>
+				<h1>Memory Game</h1>
+			</header>
+			<main>
+				<Sidebar
+					score={score}
+					highScore={highScore}
+					reset={reset}
+				/>
+				<Main
+					piclist={piclist}
+					handleClick={handleClick}
+				/>
+			</main>
     	</div>
   	)
 }
