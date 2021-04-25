@@ -28,7 +28,7 @@ export default function App() {
 	}, [score])
 
 	const handleClick = (e) => {
-		if (piclist.find(x => x.name === e.target.name).clicked === false) {
+		if (piclist.find(x => x.id === parseInt(e.target.id)).clicked === false) {
 			const newPiclist = piclist.map(x => x.id === parseInt(e.target.id) ? { ...x, clicked: true } : x)
 			setPiclist(newPiclist)
 			setScore(score + 1)
@@ -48,12 +48,14 @@ export default function App() {
 		<div>
 			<header>
 				<h1>Memory Game</h1>
+				<h3>Try to click on each image only once!</h3>
 			</header>
 			<main>
 				<Sidebar
 					score={score}
 					highScore={highScore}
 					reset={reset}
+					setHighScore={setHighScore}
 				/>
 				<Main
 					piclist={piclist}

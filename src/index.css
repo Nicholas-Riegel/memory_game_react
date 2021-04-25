@@ -1,19 +1,25 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
 header {
-    border: green solid 5px;
+    /* border: green solid 5px; */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(124, 124, 241);
+    color: whitesmoke;
+}
+
+header h1 {
+    margin-bottom: 0;
 }
 
 main {
-    border: rgb(230, 116, 230) solid 5px;
+    /* border: rgb(230, 116, 230) solid 5px; */
     display: flex;
     height: 85vh;
-}
-
-.sidebar{
-    width: 20%;
-    border: green solid 5px;
 }
 
 img {
@@ -22,23 +28,38 @@ img {
     margin-left: 10%;
 }
 
-img:hover{
-    cursor: pointer;
+.sidebar{
+    width: 15%;
+    /* border: green solid 5px; */
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-right: 0;
+    color: whitesmoke;
+    background-color: rgb(100, 100, 161);
 }
 
 .all_pics_div{
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
-    border: blue solid 5px;
+    width: 85%;
+    /* border: blue solid 5px; */
     box-sizing: border-box;
+    background-color: blueviolet;
 }
 
 .single_pic_div{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25%;
-    border: red solid 2px;
+    width: 20%;
+    /* border: red solid 1px; */
     box-sizing: border-box;
+    margin: 10px;
+    border-radius: 7px;
+    background-color: white;
 } 
+
+.single_pic_div:hover{
+    cursor: pointer;
+    /* border: pink solid 1px; */
+}
