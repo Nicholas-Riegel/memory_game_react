@@ -29,13 +29,16 @@ export default function App() {
 
 	const handleClick = (e) => {
 		if (piclist.find(x => x.id === parseInt(e.target.id)).clicked === false) {
-			const newPiclist = piclist.map(x => x.id === parseInt(e.target.id) ? { ...x, clicked: true } : x)
+			const newPiclist = piclist.map(
+					x => x.id === parseInt(e.target.id) ?
+					{ ...x, clicked: true } :
+					x
+				)
 			setPiclist(newPiclist)
 			setScore(score + 1)
 		} else {
 			setScore(0)
 			setPiclist(PicList)
-			console.log('YOU LOSE!');
 		}
 	}
 

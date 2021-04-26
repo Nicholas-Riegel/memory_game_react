@@ -10,7 +10,7 @@ export default function Main({piclist, handleClick}) {
 			name={name}
 			onClick={(e) => handleClick(e)}
 			// style={clicked === true ? { background: 'grey' } : { background: 'none' }}
-			>
+		>
 			<img
 				id={id}
 				src={url}
